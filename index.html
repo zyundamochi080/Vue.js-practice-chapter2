@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>vue.js app</title>
+    <link href="main.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+    名前<input v-model="name">
+    <button v-on:click="doadd">モンスターを追加</button>
+    <ul>
+      <li v-for="(item,index) in list"
+      v-bind:key="item.id"
+      v-bind:class="{tuyoi:item.hp>300}">
+      ID.{{item.id}} {{item.name}} HP.{{item.hp}}
+      <button v-on:click="doRemove(index)">モンスターを削除</button>
+      <button v-on:click="doAttack(index)">攻撃する</button>
+      <span v-if="item.hp>300">つよい！</span>
+      <span v-if="item.hp<=50 & item.hp>0">瀕死！</span>
+      <span v-if="item.hp<=0">撃破！</span>
+      </li>
+    </ul>
+    </div>
+    <script src="/dist/build.js"></script>
+  </body>
+</html>
